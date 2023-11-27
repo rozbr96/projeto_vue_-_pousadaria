@@ -14,6 +14,11 @@ const router = createRouter({
       component: InnsListingView
     },
     {
+      name: 'Inns',
+      path: '/inns',
+      component: InnsListingView
+    },
+    {
       name: 'Inn',
       path: '/inns/:id',
       component: InnDetailsView

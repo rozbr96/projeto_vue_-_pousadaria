@@ -43,9 +43,10 @@
     },
 
     mounted() {
-      API.get<IInn[]>('/inns').then(inns => {
-        this.inns = inns
-      })
+      const { search_for } = this.$route.query
+      const endpoint = `/search?search_for=${search_for || ''}`
+
+      API.get<IInn[]>(endpoint).then(inns => { this.inns = inns })
     }
   }
 </script>

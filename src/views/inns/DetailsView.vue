@@ -50,9 +50,9 @@
           const formatted_price = `R$ ${price_with_delimiter}`
 
           return {
-          ...room,
-          formatted_price
-        }
+            ...room,
+            formatted_price
+          }
         })
       }
     },
