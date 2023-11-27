@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import {
-  InnsListingView
+  InnsListingView,
+  InnDetailsView
 } from '@/views'
 
 const router = createRouter({
@@ -11,6 +12,11 @@ const router = createRouter({
       name: 'Home',
       path: '/',
       component: InnsListingView
+    },
+    {
+      name: 'Inn',
+      path: '/inns/:id',
+      component: InnDetailsView
     }
   ]
 })
