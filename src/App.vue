@@ -3,6 +3,7 @@
 
   import {
     NButton,
+    NDialogProvider,
     NInput,
     NInputGroup,
     NLayout,
@@ -28,28 +29,30 @@
 </script>
 
 <template>
-  <NLayout>
-    <NLayoutHeader :style="{ height: '64px', marginTop: '10px' }">
-      <NSpace justify="space-around">
-        <RouterLink :to="{ name: 'Home' }" :style="{ textDecoration: 'none' }">
-          Pousadas
-        </RouterLink>
+  <NDialogProvider>
+    <NLayout>
+      <NLayoutHeader :style="{ height: '64px', marginTop: '10px' }">
+        <NSpace justify="space-around">
+          <RouterLink :to="{ name: 'Home' }" :style="{ textDecoration: 'none' }">
+            Pousadas
+          </RouterLink>
 
-        <NInputGroup>
-          <NInput
-            placeholder="Busque pelo nome"
-            v-model:value="term"
-          />
+          <NInputGroup>
+            <NInput
+              placeholder="Busque pelo nome"
+              v-model:value="term"
+            />
 
-          <NButton @click="search">
-            Buscar
-          </NButton>
-        </NInputGroup>
-      </NSpace>
-    </NLayoutHeader>
+            <NButton @click="search">
+              Buscar
+            </NButton>
+          </NInputGroup>
+        </NSpace>
+      </NLayoutHeader>
 
-    <NLayout :style="{ height: 'calc(100vh - 74px)' }" :key="$route.fullPath">
-      <RouterView />
+      <NLayout :style="{ height: 'calc(100vh - 74px)' }" :key="$route.fullPath">
+        <RouterView />
+      </NLayout>
     </NLayout>
-  </NLayout>
+  </NDialogProvider>
 </template>

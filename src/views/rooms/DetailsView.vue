@@ -1,21 +1,32 @@
 
-<script setup lang="ts">
+<script lang="ts">
   import {
     NButton,
     NGrid,
     NGridItem,
     NSpace,
-    NText
+    NText,
+    useDialog
   } from 'naive-ui'
-</script>
 
-<script lang="ts">
+  import { h } from 'vue'
   import API from '@/libs/api'
 
   import type { IRoom } from '@/interfaces'
 
+  import { RoomAvailabilityVerificationDialog } from '@/components/dialogs'
+
+
   export default {
     name: 'Room',
+
+    components: {
+      NButton,
+      NGrid,
+      NGridItem,
+      NSpace,
+      NText
+    },
 
     data() {
       return {
@@ -23,9 +34,25 @@
       }
     },
 
+    setup() {
+      return {
+        dialog: useDialog()
+      }
+    },
+
     mounted() {
       const { id } = this.$route.params
       API.get<IRoom>(`/rooms/${id}`).then(room => { this.room = room })
+    },
+
+    methods: {
+      openVerificationDialog() {
+        this.dialog.create({
+          title: 'Verificar Disponibilidade',
+          type: 'info',
+          content: () => h(RoomAvailabilityVerificationDialog, { room_id: this.room.id })
+        })
+      }
     }
   }
 </script>
@@ -126,7 +153,7 @@
         </NGridItem>
       </NGrid>
 
-      <NButton block>
+      <NButton block @click="openVerificationDialog">
         Verificar Disponibilidade
       </NButton>
     </NSpace>
