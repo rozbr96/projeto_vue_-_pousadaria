@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import {
   InnsListingView,
-  InnDetailsView
+  InnDetailsView,
+  RoomDetailsView
 } from '@/views'
 
 const router = createRouter({
@@ -22,6 +23,11 @@ const router = createRouter({
       name: 'Inn',
       path: '/inns/:id',
       component: InnDetailsView
+    },
+    {
+      name: 'Room',
+      path: '/rooms/:id',
+      component: RoomDetailsView
     }
   ]
 })
