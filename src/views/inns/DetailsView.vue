@@ -8,6 +8,10 @@
 </script>
 
 <script lang="ts">
+  import { h } from 'vue'
+
+  import { RoomActions } from '@/components/tables'
+
   import API from '@/libs/api'
 
   import type {
@@ -37,6 +41,10 @@
           {
             title: 'Diária',
             key: 'formatted_price'
+          },
+          {
+            title: 'Ações',
+            render: (room: IRoom) => h(RoomActions, { room })
           }
         ]
       }

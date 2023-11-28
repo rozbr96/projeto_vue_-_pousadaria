@@ -1,8 +1,11 @@
 
 <script lang="ts">
+  import { h } from 'vue'
+
   import type { TableColumn } from 'naive-ui/es/data-table/src/interface'
 
   import ListingItems from '@/components/ListingItems.vue'
+  import { InnActions } from '@/components/tables'
 
   import API from '@/libs/api'
   import type { IInn } from '@/interfaces'
@@ -37,6 +40,10 @@
             title: 'Nota Média',
             key: 'score_avg',
             align: 'center'
+          },
+          {
+            title: 'Ações',
+            render: (inn: IInn) => h(InnActions, { inn })
           }
         ] as TableColumn[]
       }
