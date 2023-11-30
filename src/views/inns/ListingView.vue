@@ -24,25 +24,30 @@
           {
             title: 'Nome',
             key: 'name',
-            align: 'left'
+            align: 'left',
+            titleAlign: 'center'
           },
           {
             title: 'Cidade',
             key: 'address.city',
-            align: 'left'
+            align: 'left',
+            titleAlign: 'center'
           },
           {
             title: 'Estado',
             key: 'address.state',
-            align: 'center'
+            align: 'center',
+            titleAlign: 'center'
           },
           {
             title: 'Nota Média',
             key: 'score_avg',
-            align: 'center'
+            align: 'center',
+            titleAlign: 'center'
           },
           {
             title: 'Ações',
+            titleAlign: 'center',
             render: (inn: IInn) => h(InnActions, { inn })
           }
         ] as TableColumn[]

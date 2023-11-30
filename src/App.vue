@@ -40,9 +40,15 @@
     <NLayout>
       <NLayoutHeader :style="{ height: '64px', marginTop: '10px' }">
         <NSpace justify="space-around">
-          <RouterLink :to="{ name: 'Home' }" :style="{ textDecoration: 'none' }">
-            Pousadas
-          </RouterLink>
+          <NSpace align="center">
+            <NButton @click="$router.back">
+              &leftarrow; Voltar
+            </NButton>
+
+            <RouterLink :to="{ name: 'Home' }" :style="{ textDecoration: 'none' }">
+              <h1>Pousadas</h1>
+            </RouterLink>
+          </NSpace>
 
           <NInputGroup>
             <NInput

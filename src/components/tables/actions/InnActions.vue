@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <NSpace>
+  <NSpace justify="center">
     <NButton @click="$router.push(`/inns/${inn.id}`)">
       Detalhes
     </NButton>

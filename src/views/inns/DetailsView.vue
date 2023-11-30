@@ -9,6 +9,7 @@
 
 <script lang="ts">
   import { h } from 'vue'
+  import type { TableColumn } from 'naive-ui/es/data-table/src/interface'
 
   import { RoomActions } from '@/components/tables'
 
@@ -32,21 +33,26 @@
         roomsTableColumns: [
           {
             title: 'Nome',
+            titleAlign: 'center',
             key: 'name'
           },
           {
             title: 'Descrição',
+            titleAlign: 'center',
             key: 'description'
           },
           {
             title: 'Diária',
+            titleAlign: 'center',
+            align: 'right',
             key: 'formatted_price'
           },
           {
             title: 'Ações',
+            titleAlign: 'center',
             render: (room: IRoom) => h(RoomActions, { room })
           }
-        ]
+        ] as TableColumn[]
       }
     },
 

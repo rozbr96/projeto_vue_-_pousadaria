@@ -15,16 +15,10 @@
 </script>
 
 <template>
-  <NSpace
-    vertical
-    align='center'
-    :size="30"
-  >
-    <h1>{{ title }}</h1>
+  <h1 :style="{ textAlign: 'center' }">{{ title }}</h1>
 
-    <DataTable
-      :columns="tableColumns"
-      :data="tableData"
-    />
-  </NSpace>
+  <DataTable
+    :columns="tableColumns"
+    :data="tableData"
+  />
 </template>
