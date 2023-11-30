@@ -8,24 +8,31 @@
     NInputGroup,
     NLayout,
     NLayoutHeader,
+    NLayoutSider,
     NSpace
   } from 'naive-ui'
-</script>
 
-<script lang="ts">
-  export default {
+  import { CitiesSidemenu } from '@/components'
+
+
+  defineOptions({
     data() {
       return {
-        term: ''
+        term: '',
+        collapsed: true
       }
     },
 
     methods: {
       search() {
         this.$router.push({ name: 'Inns', query: { search_for: this.term } })
+      },
+
+      toggleSidemenu() {
+        this.collapsed = !this.collapsed
       }
     }
-  }
+  })
 </script>
 
 <template>
@@ -46,12 +53,29 @@
             <NButton @click="search">
               Buscar
             </NButton>
+
+            <NButton @click="toggleSidemenu">
+              Filtrar por cidades
+            </NButton>
           </NInputGroup>
         </NSpace>
       </NLayoutHeader>
 
-      <NLayout :style="{ height: 'calc(100vh - 74px)' }" :key="$route.fullPath">
-        <RouterView />
+      <NLayout
+        hasSider
+        siderPlacement="right"
+        :style="{ height: 'calc(100vh - 74px)' }"
+      >
+        <NLayout :key="$route.fullPath">
+          <RouterView />
+        </NLayout>
+
+        <NLayoutSider
+          :collapsed="collapsed"
+          :collapsed-width="0"
+        >
+          <CitiesSidemenu/>
+        </NLayoutSider>
       </NLayout>
     </NLayout>
   </NDialogProvider>

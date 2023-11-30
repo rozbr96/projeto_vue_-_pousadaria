@@ -50,8 +50,11 @@
     },
 
     mounted() {
-      const { search_for } = this.$route.query
-      const endpoint = `/search?search_for=${search_for || ''}`
+      const { search_for, in_city } = this.$route.query
+
+      const endpoint = in_city
+        ? `/cities/${in_city}/inns`
+        : `/search?search_for=${search_for || ''}`
 
       API.get<IInn[]>(endpoint).then(inns => { this.inns = inns })
     }
